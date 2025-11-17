@@ -1,0 +1,106 @@
+/* Global */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #222;
+}
+
+/* Navigation */
+nav {
+    background: #000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid #000;
+    margin-bottom: 30px;
+}
+
+/* Products Grid */
+.products {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Buttons */
+button, .btn {
+    background: #000;
+    color: #fff;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover, .btn:hover {
+    background: #444;
+}
+
+/* Product Page */
+.product-page {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.product-page img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+/* Checkout + Cart */
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
