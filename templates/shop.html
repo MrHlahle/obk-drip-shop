@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="section-title">
+  <h2>OBK Premium Drip Collection</h2>
+  <div><a class="btn ghost" href="{{ url_for('about') }}">About the Brand</a></div>
+</div>
+
+<div class="product-grid">
+  {% for product in products %}
+  <div class="card">
+    <img class="product-image" src="{{ url_for('static', filename='images/' + product['image']) }}" alt="{{ product['name'] }}">
+    <div class="card-body">
+      <h3>{{ product['name'] }}</h3>
+      <p>{{ product['description'] }}</p>
+      <div class="card-footer">
+        <div class="price">R{{ product['price'] }}</div>
+        <form action="{{ url_for('add_to_cart', product_id=product['id']) }}" method="post">
+          <button class="btn-sm btn-primary" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

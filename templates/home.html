@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero">
+  <div class="hero-left">
+    <h1>OBK DRIP</h1>
+    <p>Luxury Gold Streetwear — premium shirts, hats and sneakers. Authentic designs, crafted for style and comfort. Shop premium pieces and walk with confidence.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="{{ url_for('shop') }}">Enter Shop</a>
+      <a class="btn ghost" href="{{ url_for('about') }}">About OBK</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- small demo animation: rotating wheel or a placeholder image -->
+    <img src="{{ url_for('static', filename='images/hero-demo.jpeg') }}" alt="OBK demo" style="width:360px;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 12px 30px rgba(212,175,55,0.12)">
+  </div>
+</div>
+{% endblock %}

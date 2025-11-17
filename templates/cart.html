@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your Cart</h1>
+
+{% if cart_items and cart_items|length > 0 %}
+  {% for item in cart_items %}
+    <div class="cart-item">
+      <div style="display:flex;gap:12px;align-items:center">
+        <img src="{{ url_for('static', filename='images/' + item['image']) }}" style="width:100px;height:70px;object-fit:cover;border-radius:8px">
+        <div>
+          <h3 style="margin:0">{{ item['name'] }}</h3>
+          <div style="color:var(--muted)">R{{ item['price'] }}</div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div style="margin-top:12px; display:flex;justify-content:space-between;align-items:center">
+    <div class="total">Total: R{{ total }}</div>
+    <div>
+      <a class="btn ghost" href="{{ url_for('shop') }}">Continue Shopping</a>
+      <a class="btn" href="{{ url_for('checkout') }}">Checkout</a>
+    </div>
+  </div>
+
+{% else %}
+  <p>Your cart is empty. <a href="{{ url_for('shop') }}">Browse the collection</a></p>
+{% endif %}
+{% endblock %}
+
