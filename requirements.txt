@@ -1,1 +1,8 @@
 Flask==2.3.3
+Flask
+gunicorn
+Werkzeug
+Jinja2
+itsdangerous
+click
+pysqlite3-binary

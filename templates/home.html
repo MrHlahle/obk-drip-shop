@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
+
 <section class="hero">
   <div class="left">
     <h1>OBK DRIP SHOP</h1>
-    <p>Welcome to OBK Drip — premium streetwear, caps & sneakers. Fresh drops, clean fits and reliable shipping. Shop the PremiumDrip collection and stand out.</p>
+    <p>
+      Welcome to OBK Drip — premium streetwear, caps & sneakers. Fresh drops,
+      clean fits and reliable shipping. Shop the PremiumDrip collection and stand out.
+    </p>
+
     <div class="buttons">
       <a class="btn btn-primary" href="{{ url_for('shop') }}">Enter Shop</a>
       <a class="btn btn-ghost" href="{{ url_for('about') }}">About OBK Drip</a>
     </div>
   </div>
+
   <div class="right">
     <img src="{{ url_for('static', filename='images/hero-demo.jpg') }}" alt="Hero image">
   </div>
@@ -17,10 +23,10 @@
 
 <section>
   <div class="collection-title">Featured — PremiumDrip Collection</div>
-  <div class="grid">
-    {% for category, items in ( (('Tshirts', []) ) ) %}
-      {# nothing here: main shop page is via Shop link; this block reserved #}
-    {% endfor %}
-  </div>
+  
+  <p class="home-sub">
+    Explore our tees, caps, and sneakers in the shop section.
+  </p>
 </section>
+
 {% endblock %}
