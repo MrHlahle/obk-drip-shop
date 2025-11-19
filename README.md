@@ -1,4 +1,5 @@
 🛍️ OBK Drip Shop — Premium Streetwear Store
+https://obk-drip-shop.onrender.com
 
 A modern Flask-powered e-commerce web app featuring premium streetwear, caps, and sneakers.
 Built for speed, simplicity, and a clean dark navy + gold UI.
@@ -121,7 +122,7 @@ Open your browser at:
 
 http://127.0.0.1:5000
 
-🚀 Deployment (Render)
+🚀 Deployment (Render) https://obk-drip-shop.onrender.com
 
 Push latest code to GitHub
 
