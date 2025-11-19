@@ -1,25 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="section-title">
-  <h2>OBK Premium Drip Collection</h2>
-  <div><a class="btn ghost" href="{{ url_for('about') }}">About the Brand</a></div>
+
+<div style="margin-top: 80px;"></div>
+
+<h2 class="section-title">🔥 All Shirts</h2>
+<div class="product-row">
+    {% for p in shirts %}
+    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
+        <img src="{{ url_for('static', filename=p['image']) }}">
+        <div class="product-card-info">
+            <div class="product-name">{{ p.name }}</div>
+            <div class="product-price">R{{ p.price }}</div>
+        </div>
+    </a>
+    {% endfor %}
 </div>
 
-<div class="product-grid">
-  {% for product in products %}
-  <div class="card">
-    <img class="product-image" src="{{ url_for('static', filename='images/' + product['image']) }}" alt="{{ product['name'] }}">
-    <div class="card-body">
-      <h3>{{ product['name'] }}</h3>
-      <p>{{ product['description'] }}</p>
-      <div class="card-footer">
-        <div class="price">R{{ product['price'] }}</div>
-        <form action="{{ url_for('add_to_cart', product_id=product['id']) }}" method="post">
-          <button class="btn-sm btn-primary" type="submit">Add</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+<h2 class="section-title">👟 Sneakers</h2>
+<div class="product-row">
+    {% for p in sneakers %}
+    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
+        <img src="{{ url_for('static', filename=p['image']) }}">
+        <div class="product-card-info">
+            <div class="product-name">{{ p.name }}</div>
+            <div class="product-price">R{{ p.price }}</div>
+        </div>
+    </a>
+    {% endfor %}
 </div>
+
+<h2 class="section-title">🧢 Hats</h2>
+<div class="product-row">
+    {% for p in hats %}
+    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
+        <img src="{{ url_for('static', filename=p['image']) }}">
+        <div class="product-card-info">
+            <div class="product-name">{{ p.name }}</div>
+            <div class="product-price">R{{ p.price }}</div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
 {% endblock %}

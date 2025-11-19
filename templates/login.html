@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Login</h1>
-<form method="post" style="max-width:420px">
-  <label>Username</label><br>
-  <input name="username" type="text" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #222;background:#0b0b0b;color:#fff"><br>
-  <label>Password</label><br>
-  <input name="password" type="password" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #222;background:#0b0b0b;color:#fff"><br>
-  <button class="btn" type="submit">Login</button>
-</form>
-<p style="color:var(--muted)">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+
+<div style="margin-top:120px; padding:20px;">
+    <h2>Login</h2>
+
+    <form method="POST">
+        <input name="email" placeholder="Email" required
+               style="width:100%; padding:10px; margin-top:10px;">
+        <input name="password" type="password" placeholder="Password" required
+               style="width:100%; padding:10px; margin-top:10px;">
+        <button class="btn btn-primary" style="margin-top:15px;">Login</button>
+    </form>
+
+    <p style="margin-top:15px;">
+        No account? <a href="{{ url_for('register') }}" style="color:#e50914;">Register</a>
+    </p>
+</div>
+
 {% endblock %}
 
