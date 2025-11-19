@@ -1,21 +1,15 @@
 {% extends "base.html" %}
+{% block title %}Login{% endblock %}
 {% block content %}
-
-<div style="margin-top:120px; padding:20px;">
-    <h2>Login</h2>
-
-    <form method="POST">
-        <input name="email" placeholder="Email" required
-               style="width:100%; padding:10px; margin-top:10px;">
-        <input name="password" type="password" placeholder="Password" required
-               style="width:100%; padding:10px; margin-top:10px;">
-        <button class="btn btn-primary" style="margin-top:15px;">Login</button>
-    </form>
-
-    <p style="margin-top:15px;">
-        No account? <a href="{{ url_for('register') }}" style="color:#e50914;">Register</a>
-    </p>
+<div style="max-width:420px;">
+  <h3 style="color:var(--gold)">Login</h3>
+  <form method="post" class="form" style="margin-top:12px;">
+    <input name="email" placeholder="Email" required type="email">
+    <input name="password" placeholder="Password" required type="password">
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button class="btn btn-primary" type="submit">Login</button>
+      <a class="btn btn-ghost" href="{{ url_for('register') }}">Register</a>
+    </div>
+  </form>
 </div>
-
 {% endblock %}
-

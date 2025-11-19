@@ -1,7 +1,15 @@
 {% extends "base.html" %}
+{% block title %}Order Confirmed{% endblock %}
 {% block content %}
-<h1>Order Success!</h1>
-<p style="color:var(--muted)">Thank you for your purchase — your authentic OBK Drip order is confirmed. We’ll send you shipping details via your account email (demo).</p>
-<a class="btn" href="{{ url_for('shop') }}">Back to Shop</a>
+<div style="text-align:center;padding:40px 20px;border-radius:12px;background:rgba(255,255,255,0.02)">
+  <h2 style="color:var(--gold)">Order Confirmed</h2>
+  <p style="color:var(--muted);margin-top:8px">Thanks for your order{% if name %}, {{ name }}{% endif %}.</p>
+  <p style="margin-top:12px;font-weight:800">Total paid: R {{ "%.2f"|format(total) }}</p>
+
+  <div style="margin-top:18px;">
+    <a href="{{ url_for('shop') }}" class="btn btn-ghost">Continue shopping</a>
+    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to home</a>
+  </div>
+</div>
 {% endblock %}
 

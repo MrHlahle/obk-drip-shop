@@ -1,18 +1,25 @@
 {% extends "base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
 {% block content %}
+<div style="display:grid;grid-template-columns: 1fr 1fr;gap:20px;align-items:start;">
+  <div>
+    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" style="width:100%;border-radius:12px;object-fit:cover;">
+  </div>
+  <div>
+    <h2 style="color:var(--gold)">{{ product.name }}</h2>
+    <p style="color:var(--muted);font-weight:600">Category: {{ product.category }}</p>
+    <div style="font-size:20px;margin:12px 0;font-weight:900">R {{ "%.2f"|format(product.price) }}</div>
 
-<div style="margin-top: 100px; padding: 20px;">
-
-    <img src="{{ url_for('static', filename=product.image) }}" 
-         style="width: 100%; max-width: 400px; border-radius: 10px;">
-
-    <h1 style="margin-top:20px;">{{ product.name }}</h1>
-    <p style="opacity:0.8;">R{{ product.price }}</p>
-
-    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
-        <button class="btn btn-primary" style="margin-top:15px;">Add to Cart</button>
+    <form action="{{ url_for('add_to_cart', pid=product.id) }}" method="post" style="display:flex;gap:12px;align-items:center;">
+      <input class="qty" name="quantity" type="number" min="1" value="1">
+      <button class="btn btn-primary" type="submit">Add to cart</button>
+      <a href="{{ url_for('shop') }}" class="btn btn-ghost">Back to shop</a>
     </form>
 
+    <div style="margin-top:18px;color:var(--muted)">
+      <h4 style="color:var(--white)">Details</h4>
+      <p>High-quality product photos shown. Sizing and additional details should be added to product metadata in production.</p>
+    </div>
+  </div>
 </div>
-
 {% endblock %}

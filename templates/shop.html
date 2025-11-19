@@ -1,45 +1,24 @@
 {% extends "base.html" %}
+{% block title %}Shop{% endblock %}
 {% block content %}
+<h3 class="collection-title">PremiumDrip Collection</h3>
 
-<div style="margin-top: 80px;"></div>
-
-<h2 class="section-title">🔥 All Shirts</h2>
-<div class="product-row">
-    {% for p in shirts %}
-    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
-        <img src="{{ url_for('static', filename=p['image']) }}">
-        <div class="product-card-info">
-            <div class="product-name">{{ p.name }}</div>
-            <div class="product-price">R{{ p.price }}</div>
-        </div>
-    </a>
+{% for category, items in categories.items() %}
+  <h4 style="margin-top:18px;color:var(--white);font-weight:800">{{ category }}</h4>
+  <div class="grid" style="margin-bottom:18px;">
+    {% for p in items %}
+      <div class="card">
+        <a href="{{ url_for('product', pid=p.id) }}" style="display:block;text-decoration:none;color:inherit;">
+          <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.name }}">
+          <div class="name">{{ p.name }}</div>
+        </a>
+        <div class="price">R {{ "%.2f"|format(p.price) }}</div>
+        <form action="{{ url_for('add_to_cart', pid=p.id) }}" method="post">
+          <input class="qty" name="quantity" type="number" min="1" value="1">
+          <button class="btn btn-primary" type="submit">Add to cart</button>
+        </form>
+      </div>
     {% endfor %}
-</div>
-
-<h2 class="section-title">👟 Sneakers</h2>
-<div class="product-row">
-    {% for p in sneakers %}
-    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
-        <img src="{{ url_for('static', filename=p['image']) }}">
-        <div class="product-card-info">
-            <div class="product-name">{{ p.name }}</div>
-            <div class="product-price">R{{ p.price }}</div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
-
-<h2 class="section-title">🧢 Hats</h2>
-<div class="product-row">
-    {% for p in hats %}
-    <a href="{{ url_for('product_page', product_id=p['id']) }}" class="product-card">
-        <img src="{{ url_for('static', filename=p['image']) }}">
-        <div class="product-card-info">
-            <div class="product-name">{{ p.name }}</div>
-            <div class="product-price">R{{ p.price }}</div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
-
+  </div>
+{% endfor %}
 {% endblock %}

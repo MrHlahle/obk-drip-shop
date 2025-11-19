@@ -1,28 +1,43 @@
 {% extends "base.html" %}
+{% block title %}Cart{% endblock %}
 {% block content %}
-
-<div style="margin-top: 100px; padding: 20px;">
-
-<h1>Your Cart</h1>
+<h3 style="color:var(--gold);margin-bottom:12px">Your Cart</h3>
 
 {% if not cart %}
-    <p>Your cart is empty.</p>
+  <p style="color:var(--muted)">Your cart is empty. <a href="{{ url_for('shop') }}" style="color:var(--gold)">Continue shopping</a></p>
 {% else %}
-    {% for item in cart %}
-        <div style="background:#222; padding:15px; margin:10px 0; border-radius:8px;">
-            {{ item.name }} — R{{ item.price }}
+  <form action="{{ url_for('update_cart') }}" method="post">
+    <div class="cart-list">
+      {% for pid, item in cart.items() %}
+        <div class="cart-item">
+          <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
+          <div class="meta">
+            <div class="title">{{ item.name }}</div>
+            <div style="color:var(--muted)">R {{ "%.2f"|format(item.price) }} each</div>
+          </div>
+          <div>
+            <input name="qty_{{ pid }}" class="qty" type="number" min="0" value="{{ item.quantity }}">
+          </div>
+          <div style="width:120px;text-align:right;">
+            <div style="font-weight:800">R {{ "%.2f"|format(item.price * item.quantity) }}</div>
+          </div>
         </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
 
-    <p style="margin-top:20px;">Total: R{{ total }}</p>
-
-    <a href="{{ url_for('checkout') }}">
-        <button class="btn btn-primary" style="margin-top:20px;">Proceed to Checkout</button>
-    </a>
+    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;">
+      <a href="{{ url_for('shop') }}" class="btn btn-ghost">Continue shopping</a>
+      <div style="text-align:right;">
+        <div class="totals">Total: R {{ "%.2f"|format(total) }}</div>
+        <div style="margin-top:10px;">
+          <button type="submit" class="btn btn-ghost">Update cart</button>
+          <a href="{{ url_for('checkout') }}" class="btn btn-primary">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </form>
 {% endif %}
-
-</div>
-
 {% endblock %}
+
 
 

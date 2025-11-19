@@ -1,21 +1,19 @@
 {% extends "base.html" %}
+{% block title %}Register{% endblock %}
 {% block content %}
-
-<div style="margin-top:120px; padding:20px;">
-    <h2>Create Account</h2>
-
-    <form method="POST">
-        <input name="name" placeholder="Name" required
-               style="width:100%; padding:10px; margin-top:10px;">
-        <input name="email" placeholder="Email" required
-               style="width:100%; padding:10px; margin-top:10px;">
-        <input name="password" type="password" placeholder="Password" required
-               style="width:100%; padding:10px; margin-top:10px;">
-        <button class="btn btn-primary" style="margin-top:15px;">Register</button>
-    </form>
-
+<div style="max-width:520px;">
+  <h3 style="color:var(--gold)">Create an account</h3>
+  <form method="post" class="form" style="margin-top:12px;">
+    <input name="name" placeholder="Full name" required>
+    <input name="email" placeholder="Email" required type="email">
+    <input name="password" placeholder="Password" required type="password">
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button class="btn btn-primary" type="submit">Register</button>
+      <a class="btn btn-ghost" href="{{ url_for('login') }}">Already have an account?</a>
+    </div>
+  </form>
 </div>
-
 {% endblock %}
+
 
 
